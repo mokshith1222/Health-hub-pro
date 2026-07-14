@@ -5,6 +5,18 @@ import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { BMICalculator } from '@/components/calculators/bmi-calculator'
 import { TDEECalculator } from '@/components/calculators/tdee-calculator'
+import { CalorieBurnCalculator } from '@/components/calculators/calorie-burn-calculator'
+import { BodyFatCalculator } from '@/components/calculators/body-fat-calculator'
+import { BloodPressureCalculator } from '@/components/calculators/blood-pressure-calculator'
+import { BloodGlucoseCalculator } from '@/components/calculators/blood-glucose-calculator'
+import { DosageCalculator } from '@/components/calculators/dosage-calculator'
+import { WaterIntakeCalculator } from '@/components/calculators/water-intake-calculator'
+import { SkinTypeQuiz } from '@/components/calculators/skin-type-quiz'
+import { MakupShadeMatcher } from '@/components/calculators/makeup-shade-matcher'
+import { HairCareAssessment } from '@/components/calculators/hair-care-assessment'
+import { VitaminDDosage } from '@/components/calculators/vitamin-d-dosage'
+import { EyeHealthAssessment } from '@/components/calculators/eye-health-assessment'
+import { MacroCalculator } from '@/components/calculators/macro-calculator'
 import { ArrowLeft, Info } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -62,6 +74,174 @@ const calculators: Record<string, {
       {
         q: 'How do I use TDEE for weight loss?',
         a: 'To lose weight, consume 300-500 calories less than your TDEE (10-15% deficit). To gain muscle, consume 300-500 calories more.',
+      },
+    ],
+  },
+  'calorie-burn': {
+    name: 'Calorie Burn Calculator',
+    description: 'Estimate calories burned during different activities based on your weight and activity type.',
+    component: CalorieBurnCalculator,
+    relatedArticles: [
+      { title: 'Exercise Benefits Guide', href: '/categories/wellness' },
+    ],
+    faqs: [
+      {
+        q: 'What is a MET?',
+        a: 'MET (Metabolic Equivalent) is a unit that measures the intensity of physical activity. 1 MET equals the energy spent at rest.',
+      },
+    ],
+  },
+  'body-fat': {
+    name: 'Body Fat Percentage Calculator',
+    description: 'Estimate your body fat percentage based on age, BMI, and gender.',
+    component: BodyFatCalculator,
+    relatedArticles: [
+      { title: 'Health and Fitness', href: '/categories/wellness' },
+    ],
+    faqs: [
+      {
+        q: 'Is body fat percentage important?',
+        a: 'Yes, body fat percentage is a better indicator of health than weight alone. It accounts for muscle mass.',
+      },
+    ],
+  },
+  'blood-pressure': {
+    name: 'Blood Pressure Category',
+    description: 'Check your blood pressure reading and get health classification.',
+    component: BloodPressureCalculator,
+    relatedArticles: [
+      { title: 'Hypertension Management', href: '/categories/wellness' },
+    ],
+    faqs: [
+      {
+        q: 'What is normal blood pressure?',
+        a: 'Normal blood pressure is less than 120/80 mmHg.',
+      },
+    ],
+  },
+  'blood-glucose': {
+    name: 'Blood Glucose Calculator',
+    description: 'Monitor blood sugar levels and understand glucose readings.',
+    component: BloodGlucoseCalculator,
+    relatedArticles: [
+      { title: 'Diabetes Management', href: '/categories/wellness' },
+    ],
+    faqs: [
+      {
+        q: 'What are normal glucose levels?',
+        a: 'Fasting: less than 100 mg/dL (normal), Random: less than 140 mg/dL (normal).',
+      },
+    ],
+  },
+  'dosage': {
+    name: 'Dosage Calculator',
+    description: 'Calculate medication dosages safely based on patient weight.',
+    component: DosageCalculator,
+    relatedArticles: [
+      { title: 'Medication Information', href: '/categories/pharmaceuticals' },
+    ],
+    faqs: [
+      {
+        q: 'Should I use this for prescribing?',
+        a: 'No, always follow your healthcare provider&apos;s prescriptions. This is for educational purposes only.',
+      },
+    ],
+  },
+  'water-intake': {
+    name: 'Water Intake Calculator',
+    description: 'Calculate your daily water intake needs based on weight, activity, and climate.',
+    component: WaterIntakeCalculator,
+    relatedArticles: [
+      { title: 'Hydration and Wellness', href: '/categories/wellness' },
+    ],
+    faqs: [
+      {
+        q: 'Why is hydration important?',
+        a: 'Water supports all bodily functions, from temperature regulation to nutrient transport.',
+      },
+    ],
+  },
+  'skin-type': {
+    name: 'Skin Type Quiz',
+    description: 'Discover your skin type and get personalized skincare recommendations.',
+    component: SkinTypeQuiz,
+    relatedArticles: [
+      { title: 'Skincare Guide', href: '/categories/beauty' },
+    ],
+    faqs: [
+      {
+        q: 'Can skin type change?',
+        a: 'Yes, skin type can change due to age, hormones, and environmental factors.',
+      },
+    ],
+  },
+  'makeup-shade': {
+    name: 'Makeup Shade Matcher',
+    description: 'Find your perfect makeup shades based on undertone and skin depth.',
+    component: MakupShadeMatcher,
+    relatedArticles: [
+      { title: 'Makeup Basics', href: '/categories/cosmetics' },
+    ],
+    faqs: [
+      {
+        q: 'What is undertone?',
+        a: 'Undertone is the subtle color beneath your skin. Common undertones are warm, cool, and neutral.',
+      },
+    ],
+  },
+  'hair-care': {
+    name: 'Hair Care Assessment',
+    description: 'Get personalized hair care recommendations based on your hair type and condition.',
+    component: HairCareAssessment,
+    relatedArticles: [
+      { title: 'Hair Care Guide', href: '/categories/beauty' },
+    ],
+    faqs: [
+      {
+        q: 'How often should I wash my hair?',
+        a: 'It depends on hair type. Oily hair: 2-3x weekly, Dry hair: 1-2x weekly, Curly: 1x weekly.',
+      },
+    ],
+  },
+  'vitamin-d': {
+    name: 'Vitamin D Dosage',
+    description: 'Get personalized vitamin D supplementation recommendations.',
+    component: VitaminDDosage,
+    relatedArticles: [
+      { title: 'Vitamin D Guide', href: '/categories/supplements' },
+    ],
+    faqs: [
+      {
+        q: 'Why is vitamin D important?',
+        a: 'Vitamin D supports bone health, immune function, and mood regulation.',
+      },
+    ],
+  },
+  'eye-health': {
+    name: 'Eye Health Assessment',
+    description: 'Assess eye symptoms and get recommendations for eye care.',
+    component: EyeHealthAssessment,
+    relatedArticles: [
+      { title: 'Vision Care', href: '/categories/vision-care' },
+    ],
+    faqs: [
+      {
+        q: 'What is the 20-20-20 rule?',
+        a: 'Every 20 minutes, look at something 20 feet away for 20 seconds to reduce eye strain.',
+      },
+    ],
+  },
+  'macro': {
+    name: 'Macro Calculator',
+    description: 'Calculate optimal macronutrient ratios for your diet goals.',
+    component: MacroCalculator,
+    relatedArticles: [
+      { title: 'Nutrition Guide', href: '/categories/health-food' },
+    ],
+    faqs: [
+      {
+        q: 'What are macronutrients?',
+        a: 'Macronutrients are protein, carbohydrates, and fat - the main nutrients your body needs.',
       },
     ],
   },
