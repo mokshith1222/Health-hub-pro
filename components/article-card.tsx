@@ -8,7 +8,7 @@ interface ArticleCardProps {
 }
 
 export function ArticleCard({ article, category }: ArticleCardProps) {
-  const publishDate = new Date(article.metadata.publishedDate)
+  const publishDate = new Date(article.metadata.date || new Date())
   const formattedDate = publishDate.toLocaleDateString('en-US', { 
     year: 'numeric', 
     month: 'short', 
@@ -57,9 +57,9 @@ export function ArticleCard({ article, category }: ArticleCardProps) {
           </div>
           <div className="flex items-center gap-1">
             <Clock className="w-4 h-4" />
-            <span>{article.metadata.readingTime} min read</span>
+            <span>{article.metadata.readTime || '5'} min read</span>
           </div>
-          <time dateTime={article.metadata.publishedDate} className="ml-auto">
+          <time dateTime={article.metadata.date} className="ml-auto">
             {formattedDate}
           </time>
         </div>
@@ -73,13 +73,20 @@ export function ArticleCard({ article, category }: ArticleCardProps) {
         )}
 
         {/* Keywords */}
-        <div className="mb-4 flex flex-wrap gap-2">
-          {article.metadata.keywords.slice(0, 3).map((keyword) => (
-            <span key={keyword} className="inline-block rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground">
-              {keyword}
-            </span>
-          ))}
-        </div>
+        {article.metadata.keywords && (
+          <div className="mb-4 flex flex-wrap gap-2">
+            {(typeof article.metadata.keywords === 'string' 
+              ? article.metadata.keywords.split(', ').slice(0, 3)
+              : Array.isArray(article.metadata.keywords) 
+              ? article.metadata.keywords.slice(0, 3)
+              : []
+            ).map((keyword) => (
+              <span key={keyword} className="inline-block rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground">
+                {keyword}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* Read more link */}
         <Link

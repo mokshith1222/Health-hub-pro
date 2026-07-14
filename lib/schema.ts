@@ -15,8 +15,8 @@ export function generateArticleSchema(article: {
     headline: article.metadata.title,
     description: article.metadata.description,
     image: imageUrl,
-    datePublished: article.metadata.publishedDate,
-    dateModified: article.metadata.lastUpdatedDate,
+    datePublished: article.metadata.date,
+    dateModified: article.metadata.updated || article.metadata.date,
     author: {
       '@type': 'Person',
       name: article.metadata.author,
@@ -39,7 +39,7 @@ export function generateArticleSchema(article: {
       '@type': 'WebPage',
       name: article.metadata.title,
     },
-    keywords: article.metadata.keywords.join(', '),
+    keywords: typeof article.metadata.keywords === 'string' ? article.metadata.keywords : (article.metadata.keywords || '').toString(),
     articleBody: article.metadata.description,
     isAccessibleForFree: true,
   }
