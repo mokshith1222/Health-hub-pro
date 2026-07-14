@@ -54,6 +54,9 @@ export const metadata: Metadata = {
     'max-video-preview': -1,
     googleBot: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
   },
+  verification: {
+    google: 'googlefbfa23743896d7f7',
+  },
 }
 
 export const viewport: Viewport = {
